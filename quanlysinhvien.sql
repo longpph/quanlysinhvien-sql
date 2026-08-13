@@ -76,3 +76,23 @@ insert into Mark (SubId, StudentId, Mark, ExamTime)
 values (1, 1, 8, 1),
  (1, 2, 10, 2),
  (2, 1, 12, 1);
+ 
+select * from Student;
+ 
+select * from Student where Status = true;
+
+select * from Subject;
+
+select * from Subject where Credit < 10;
+
+select S.StudentID, S.StudentName, C.ClassName
+from Student S join Class C on S.ClassID = C.ClassID;
+
+select S.StudentID, S.StudentName, C.ClassName
+from Student S join Class C on S.ClassID = C.ClassID
+where C.ClassName = 'A1';
+
+select S.StudentID, S.StudentName, Sub.SubName, M.Mark
+from Student S join Mark M on S.StudentID = M.StudentID
+				join Subject Sub on M.SubID = Sub.SubID
+where Sub.SubName = 'CF';
