@@ -83,6 +83,8 @@ select * from Student where Status = true;
 
 select * from Subject;
 
+select * from Class;
+
 select * from Subject where Credit < 10;
 
 select S.StudentID, S.StudentName, C.ClassName
@@ -96,3 +98,17 @@ select S.StudentID, S.StudentName, Sub.SubName, M.Mark
 from Student S join Mark M on S.StudentID = M.StudentID
 				join Subject Sub on M.SubID = Sub.SubID
 where Sub.SubName = 'CF';
+
+select * from Student where StudentName like 'h%';
+
+select * from Class where month(StartDate) = 12;
+
+select * from subject where Credit between 3 and 5;
+
+update Student set ClassID = 2 where StudentName = 'Hung';
+
+select s.StudentName, sub.SubName, m.Mark
+from Student s
+join Mark m on s.StudentID = m.StudentID
+	join Subject sub on m.SubID = sub.SubID
+order by m.Mark DESC, s.StudentName;
