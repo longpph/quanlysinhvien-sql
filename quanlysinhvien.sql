@@ -112,3 +112,26 @@ from Student s
 join Mark m on s.StudentID = m.StudentID
 	join Subject sub on m.SubID = sub.SubID
 order by m.Mark DESC, s.StudentName;
+
+select Address, Count(StudentID) as TotalStudent
+from student
+group by Address;
+
+select * from Mark;
+
+select s.StudentID, s.StudentName, avg(Mark) as `AVG Mark`
+from Student s join Mark m on s.StudentID = m.StudentID
+group by s.StudentID, s.StudentName
+having avg(Mark) > 15
+order by avg(Mark);
+
+select s.StudentID, s.StudentName, Max(avg(Mark)) as `Max AVG Mark`
+from Student s join Mark m on s.StudentID = m.StudentID
+group by s.StudentID, s.StudentName
+having avg(Mark) > 15;
+
+select s.StudentID, s.StudentName, avg(Mark) as `Max AVG Mark`
+from Student s join Mark m on s.StudentID = m.StudentID
+group by s.StudentID, s.StudentName
+having avg(Mark) >= all ( select avg(mark) from mark group by StudentID);
+
